@@ -5,7 +5,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ApiController } from './api.controller';
 import { ApiService } from './api.service';
 import { JobsModule } from './jobs/jobs.module';
-import { KafkaModule } from './kafka/kafka.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { SearchModule } from './search/search.module';
 

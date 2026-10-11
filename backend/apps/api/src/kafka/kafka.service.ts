@@ -1,7 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
-import { KAFKA_EVENT_SEND, KAFKA_SERVICE } from './domain/constant';
-import { CreateKafkaDto } from './dto/create-kafka.dto';
+import {
+  KAFKA_EVENT_SEND,
+  KAFKA_SERVICE,
+} from '../../../../libs/kafka/src/domain/constant';
+import { CreateKafkaDto } from '../../../../libs/kafka/src/dto/create-kafka.dto';
 
 @Injectable()
 export class KafkaService {

@@ -1,10 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service.js';
-
+import { Controller, Get, Logger } from '@nestjs/common';
+import { EventPattern, Payload } from '@nestjs/microservices';
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  private readonly logger = new Logger(AppController.name);
 
+  @EventPattern(process.env.KAFKA_SERVICE || 'jobradar.search.requested')
+  async heandleSearchRequested(@Payload() message: SearchRequestedEvent) {}
   @Get()
   getHello(): string {
     return this.appService.getHello();

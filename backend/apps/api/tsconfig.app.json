@@ -5,6 +5,10 @@
     "rootDir": "../..",
     "outDir": "../../dist/apps/api"
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*",
+    "../../libs/kafka/src/domain",
+    "../../libs/kafka/src/dto"
+  ],
   "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }

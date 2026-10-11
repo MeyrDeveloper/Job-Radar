@@ -8,19 +8,6 @@ async function bootstrap() {
   // validation dto
   app.useGlobalPipes(new ValidationPipe());
 
-  // Kafka microservice
-  // app.connectMicroservice<MicroserviceOptions>({
-  //   transport: Transport.KAFKA,
-  //   options: {
-  //     client: {
-  //       brokers: [`localhost:${process.env.KAFKA_PORT}`],
-  //     },
-  //     consumer: {
-  //       groupId: 'jobradar-kafka',
-  //     },
-  //   },
-  // });
-  // Swagger
   const config = new DocumentBuilder()
     .setTitle('Application API')
     .setDescription('The main appl API description')
@@ -28,9 +15,6 @@ async function bootstrap() {
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
-
-  // run microservices
-  // await app.startAllMicroservices();
 
   await app.listen(process.env.port ?? 3000);
 }

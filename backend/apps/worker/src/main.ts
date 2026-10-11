@@ -1,10 +1,26 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule, ObserveInstrument } from './app.module.js';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import dotenv from 'dotenv';
+import { AppModule } from './app.module';
+
+dotenv.config();
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
-    instrument: ObserveInstrument,
-  });
-  await app.listen(3001);
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AppModule,
+    {
+      transport: Transport.KAFKA,
+      options: {
+        client: {
+          clientId: 'api',
+          brokers: [`${process.env.KAFKA_URI}`],
+        },
+        consumer: {
+          groupId: 'api-group',
+        },
+      },
+    },
+  );
+  await app.listen();
 }
 await bootstrap();
