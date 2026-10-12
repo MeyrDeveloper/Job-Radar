@@ -1,3 +1,4 @@
+import { KafkaModule } from '@app/kafka';
 import { SharedService } from '@app/shared';
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -12,7 +13,7 @@ import { SearchModule } from './search/search.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env.local', '.env'],
+      envFilePath: ['./apps/api/.env.local', '.env.local', '.env'],
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -25,7 +26,7 @@ import { SearchModule } from './search/search.module';
     }),
     JobsModule,
     SearchModule,
-    KafkaModule,
+    KafkaModule.forRootAsync({ name: 'SEARCH_KAFKA_SERVICE' }),
   ],
   controllers: [ApiController],
   providers: [ApiService, SharedService],

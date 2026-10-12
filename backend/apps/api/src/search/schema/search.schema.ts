@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { SEARCH_STATUS } from '../../types/search';
+import { SEARCH_STATUS } from '../../../../../libs/shared/src/types/search';
 
 export type SearchDocument = Search & Document;
 @Schema()

@@ -1,19 +1,22 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
-import { KAFKA_EVENT_SEND, KAFKA_SERVICE } from './domain/constant';
-import { CreateKafkaDto } from './dto/create-kafka.dto';
 
 @Injectable()
 export class KafkaService {
-  constructor(
-    @Inject(KAFKA_SERVICE) private readonly kafkaClient: ClientKafka,
-  ) {}
+  private readonly logger = new Logger(KafkaService.name);
+
+  constructor(private readonly kafkaClient: ClientKafka) {}
 
   async init() {
-    await this.kafkaClient.connect();
+    try {
+      await this.kafkaClient.connect();
+      this.logger.log('Kafka connected successfully.');
+    } catch (e) {
+      this.logger.error('Failed to connect to Kafka', e);
+    }
   }
 
-  sendMessage(payload: CreateKafkaDto) {
-    this.kafkaClient.emit(KAFKA_EVENT_SEND, payload);
+  createSearchQuote<T>(eventType: string, payload: T) {
+    return this.kafkaClient.emit(eventType, payload);
   }
 }

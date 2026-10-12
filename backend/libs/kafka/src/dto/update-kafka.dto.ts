@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateKafkaDto } from './create-kafka.dto';
+import { CreateKafkaRequestDto } from './create-kafka.dto';
 
-export class UpdateKafkaDto extends PartialType(CreateKafkaDto) {
+export class UpdateKafkaDto extends PartialType(CreateKafkaRequestDto) {
   id: number;
 }

@@ -1,5 +1,5 @@
 import { IsEnum, IsNumber, IsString } from 'class-validator';
-import { SEARCH_STATUS } from '../../types/search';
+import { SEARCH_STATUS } from '../../../../../libs/shared/src/types/search';
 
 export class CreateRequestSearchDto {
   @IsString()

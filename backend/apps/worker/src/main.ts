@@ -12,11 +12,11 @@ async function bootstrap() {
       transport: Transport.KAFKA,
       options: {
         client: {
-          clientId: 'api',
+          clientId: process.env.KAFKA_CLIENT_ID,
           brokers: [`${process.env.KAFKA_URI}`],
         },
         consumer: {
-          groupId: 'api-group',
+          groupId: `${process.env.KAFKA_GROUP_ID}`,
         },
       },
     },

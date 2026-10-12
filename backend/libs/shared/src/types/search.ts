@@ -4,3 +4,9 @@ export enum SEARCH_STATUS {
   COMPLETED = 'COMPLETED',
   FAILED = 'FAILED',
 }
+
+export enum JOBS_SOURCES {
+  hh = 'hh',
+  linkedin = 'linkedin',
+  web = 'web',
+}

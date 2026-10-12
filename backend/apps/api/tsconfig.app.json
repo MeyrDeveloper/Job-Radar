@@ -8,7 +8,8 @@
   "include": [
     "src/**/*",
     "../../libs/kafka/src/domain",
-    "../../libs/kafka/src/dto"
+    "../../libs/kafka/src/dto",
+    "../../libs/shared/src/types"
   ],
   "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }
