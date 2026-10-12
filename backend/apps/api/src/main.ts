@@ -1,4 +1,5 @@
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -6,6 +7,7 @@ import { ApiModule } from './api.module.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(ApiModule);
+  const configService = app.get(ConfigService);
   // validation dto
   app.useGlobalPipes(new ValidationPipe());
 
@@ -13,11 +15,11 @@ async function bootstrap() {
     transport: Transport.KAFKA,
     options: {
       client: {
-        clientId: process.env.KAFKA_CLIENT_ID,
-        brokers: [`${process.env.KAFKA_URI}`],
+        clientId: configService.get('KAFKA_CLIENT_ID', 'API_CLIENT'),
+        brokers: [configService.get('KAFKA_URI', '127.0.0.1:9092')],
       },
       consumer: {
-        groupId: `${process.env.KAFKA_GROUP_ID}`,
+        groupId: configService.get('KAFKA_GROUP_ID', 'KAFKA_API_GROUP'),
       },
     },
   });

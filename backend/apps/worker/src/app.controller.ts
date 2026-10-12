@@ -26,16 +26,16 @@ export class AppController {
   async handleSearchRequested(
     @Payload() message: Partial<KafkaRequestPayloadType>,
   ): Promise<void> {
-    await this.appService.processSearchRequest(message);
+    const jobsCount = await this.appService.processSearchRequest(message);
 
     await firstValueFrom(
-      this.kafkaService.createSearchQuote<KafkaResponsePayloadType>(
+      this.kafkaService.createEvent<KafkaResponsePayloadType>(
         KAFKA_EVENT_COMPLETE,
         {
           eventId: `${message.eventId}:hh`,
           searchId: `${message.searchId}`,
           status: SEARCH_STATUS.COMPLETED,
-          jobsFound: 0,
+          jobsFound: jobsCount,
           source: JOBS_SOURCES.hh,
           finishedAt: new Date().toISOString(),
         },

@@ -16,7 +16,7 @@ export class KafkaService {
     }
   }
 
-  createSearchQuote<T>(eventType: string, payload: T) {
+  createEvent<T>(eventType: string, payload: T) {
     return this.kafkaClient.emit(eventType, payload);
   }
 }

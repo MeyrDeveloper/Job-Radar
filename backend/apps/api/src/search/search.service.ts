@@ -32,7 +32,7 @@ export class SearchService {
       createdAt: new Date(),
     });
 
-    this.kafkaService.createSearchQuote(KAFKA_EVENT_REQUEST, {
+    this.kafkaService.createEvent(KAFKA_EVENT_REQUEST, {
       ...createdSearchDocument.toObject(),
       eventId: randomUUID(),
       eventType: process.env.KAFKA_SERVICE ?? '',
@@ -77,4 +77,6 @@ export class SearchService {
 
     await search.save();
   }
+
+  async findJobs(id: string) {}
 }

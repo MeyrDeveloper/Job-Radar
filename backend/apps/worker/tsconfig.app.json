@@ -5,6 +5,6 @@
     "rootDir": "../..",
     "outDir": "../../dist/apps/worker"
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../../libs/shared/src/mock"],
   "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }
