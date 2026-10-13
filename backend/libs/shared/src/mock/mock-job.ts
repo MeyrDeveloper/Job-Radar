@@ -1,13 +1,6 @@
-export interface ScrapedJob {
-  source: string;
-  externalId: string;
-  title: string;
-  company: string;
-  location: string;
-  url: string;
-}
+import { IScrapedJob } from '../scraped/scrapedJob';
 
-export function getMockJobs(query: string, location: string): ScrapedJob[] {
+export function getMockJobs(query: string, location: string): IScrapedJob[] {
   return [
     {
       source: 'mock',
