@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 import { SEARCH_STATUS } from '../../../../../libs/shared/src/types/search';
 
-export type SearchDocument = Search & Document;
+export type SearchDocument = HydratedDocument<Search>;
 @Schema()
 export class Search {
   @Prop({ required: true })

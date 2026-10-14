@@ -5,7 +5,7 @@ export type JobDocument = HydratedDocument<Job>;
 
 @Schema({ timestamps: true })
 export class Job {
-  @Prop({ required: true, index: true })
+  @Prop({ required: true })
   externalId: string;
 
   @Prop({ required: true })
@@ -28,9 +28,6 @@ export class Job {
 
   @Prop({ required: true })
   url: string;
-
-  @Prop({ required: true, index: true })
-  searchId: string;
 }
 
 export const JobSchema = SchemaFactory.createForClass(Job);

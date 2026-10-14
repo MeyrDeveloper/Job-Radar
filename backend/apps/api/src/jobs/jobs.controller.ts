@@ -11,7 +11,9 @@ export class JobsController {
 
   @EventPattern(KAFKA_EVENT_JOB_FOUND)
   async saveFoundedJob(@Payload() message: Partial<ScrapedJobDto>) {
-    await this.jobsService.saveJob(message);
+    const { searchId, ...restMessage } = message;
+
+    await this.jobsService.saveJob(restMessage, searchId ?? '');
     this.logger.log('Searched job is saved');
   }
 

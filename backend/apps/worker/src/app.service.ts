@@ -26,13 +26,13 @@ export class AppService {
     for (const job of jobs) {
       await firstValueFrom(
         this.kafkaService.createEvent(KAFKA_EVENT_JOB_FOUND, {
-          searchId: message.searchId,
           source: job.source,
           title: job.title,
           location: job.location,
           url: job.url,
           externalId: job.externalId,
           company: job.company,
+          searchId: message.searchId,
         }),
       );
     }

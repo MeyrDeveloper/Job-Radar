@@ -32,13 +32,14 @@ export class SearchService {
       createdAt: new Date(),
     });
 
+    await createdSearchDocument.save();
+
     this.kafkaService.createEvent(KAFKA_EVENT_REQUEST, {
       ...createdSearchDocument.toObject(),
       eventId: randomUUID(),
       eventType: process.env.KAFKA_SERVICE ?? '',
       searchId: createdSearchDocument.id,
     });
-    await createdSearchDocument.save();
 
     return {
       searchId: createdSearchDocument.id,
@@ -72,11 +73,9 @@ export class SearchService {
     }
 
     search.status = SEARCH_STATUS.COMPLETED;
-    search.jobsFound += +payload.jobsFound;
+    search.jobsFound += Number(payload.jobsFound);
     search.finishedAt = new Date();
 
     await search.save();
   }
-
-  async findJobs(id: string) {}
 }

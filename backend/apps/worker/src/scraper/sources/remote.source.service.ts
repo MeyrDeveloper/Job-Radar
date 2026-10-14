@@ -1,4 +1,3 @@
-import { ScrapedJobDto } from '@app/shared/dto/scraped';
 import { IJobSource } from '@app/shared/scraped/scrapedJob';
 import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
@@ -22,10 +21,7 @@ export class RemoteOkSource implements IJobSource {
 
   constructor(private readonly httpService: HttpService) {}
 
-  async searchRemoteOk(
-    query: string,
-    location: string,
-  ): Promise<ScrapedJobDto[]> {
+  async searchRemoteOk(query: string, location: string) {
     try {
       const res = await firstValueFrom(
         this.httpService.get('https://remoteok.com/api', {
