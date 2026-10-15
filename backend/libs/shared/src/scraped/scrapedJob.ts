@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import { ScrapedJobDto } from '../dto/scraped';
+import { ScrapedJobDto } from '../dto/scraped.dto';
 
 export interface IScrapedJob extends ScrapedJobDto {}
 

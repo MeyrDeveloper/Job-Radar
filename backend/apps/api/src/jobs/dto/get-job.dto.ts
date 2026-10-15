@@ -19,13 +19,6 @@ export class JobItemResponseDto extends Job {
     super();
 
     Object.assign(this, partial);
-
-    // if (partial && (partial as any)._id) {
-    //   this.id = (partial as any)._id.toString();
-    // }
-
-    // delete (this as any)._id;
-    // delete (this as any).__v;
   }
 }
 
@@ -39,4 +32,8 @@ export class JobResponseDto {
   @ValidateNested({ each: true })
   @Type(() => JobItemResponseDto)
   jobs: JobItemResponseDto[];
+
+  constructor(partial: Partial<JobResponseDto>) {
+    Object.assign(this, partial);
+  }
 }

@@ -5,6 +5,10 @@
     "rootDir": "../..",
     "outDir": "../../dist/apps/worker"
   },
-  "include": ["src/**/*", "../../libs/shared/src/mock"],
+  "include": [
+    "src/**/*",
+    "../../libs/shared/src/mock",
+    "../../libs/shared/src/dto/page.ts"
+  ],
   "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }

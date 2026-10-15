@@ -1,7 +1,15 @@
 import { KAFKA_EVENT_JOB_FOUND } from '@app/kafka/domain/constant';
-import { ScrapedJobDto } from '@app/shared/dto/scraped';
-import { Controller, Get, Logger, Param } from '@nestjs/common';
+import { ScrapedJobDto } from '@app/shared/dto/scraped.dto';
+import {
+  ClassSerializerInterceptor,
+  Controller,
+  Get,
+  Logger,
+  Param,
+  UseInterceptors,
+} from '@nestjs/common';
 import { EventPattern, Payload } from '@nestjs/microservices';
+import { JobResponseDto } from './dto/get-job.dto';
 import { JobsService } from './jobs.service';
 
 @Controller('jobs')
@@ -18,7 +26,10 @@ export class JobsController {
   }
 
   @Get(':searchId')
-  async searchJobsBySearchId(@Param('searchId') searchId: string) {
+  @UseInterceptors(ClassSerializerInterceptor)
+  async searchJobsBySearchId(
+    @Param('searchId') searchId: string,
+  ): Promise<JobResponseDto> {
     const jobs = await this.jobsService.findSavedJobs(searchId);
 
     return {
