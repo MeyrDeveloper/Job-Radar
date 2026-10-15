@@ -24,9 +24,9 @@ import { SearchModule } from './search/search.module';
         return { uri };
       },
     }),
+    KafkaModule.forRootAsync({ name: 'SEARCH_KAFKA_SERVICE' }),
     JobsModule,
     SearchModule,
-    KafkaModule.forRootAsync({ name: 'SEARCH_KAFKA_SERVICE' }),
   ],
   controllers: [ApiController],
   providers: [ApiService, SharedService],

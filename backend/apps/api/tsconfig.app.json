@@ -9,7 +9,10 @@
     "src/**/*",
     "../../libs/kafka/src/domain",
     "../../libs/kafka/src/dto",
-    "../../libs/shared/src/types"
+    "../../libs/shared/src/types",
+    "../../libs/database/schemas/job.schema.ts",
+    "../../libs/database/schemas/search.schema.ts",
+    "../../libs/database/schemas/searchResult.schema.ts"
   ],
   "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }

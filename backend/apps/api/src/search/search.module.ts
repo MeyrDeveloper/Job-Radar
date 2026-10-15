@@ -1,13 +1,10 @@
+import { DatabaseModule } from '@app/database';
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Search, SearchSchema } from './schema/search.schema';
 import { SearchController } from './search.controller';
 import { SearchService } from './search.service';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: Search.name, schema: SearchSchema }]),
-  ],
+  imports: [DatabaseModule],
   controllers: [SearchController],
   providers: [SearchService],
 })

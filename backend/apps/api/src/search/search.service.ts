@@ -1,3 +1,4 @@
+import { Search, SearchDocument } from '@app/database/schemas/search.schema';
 import { KafkaService } from '@app/kafka';
 import { KAFKA_EVENT_REQUEST } from '@app/kafka/domain/constant';
 import { KafkaResponsePayloadType } from '@app/kafka/dto/create-kafka.dto';
@@ -11,7 +12,6 @@ import {
   CreateResponseSearchByIdDto,
   CreateResponseSearchDto,
 } from './dto/create-search.dto';
-import { Search, SearchDocument } from './schema/search.schema';
 import { SearchModule } from './search.module';
 
 @Injectable()

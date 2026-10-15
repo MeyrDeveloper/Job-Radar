@@ -1,6 +1,6 @@
+import { SEARCH_STATUS } from '@app/shared/types/search';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { SEARCH_STATUS } from '../../../../../libs/shared/src/types/search';
 
 export type SearchDocument = HydratedDocument<Search>;
 @Schema()

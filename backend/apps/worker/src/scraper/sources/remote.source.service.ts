@@ -65,6 +65,7 @@ export class RemoteOkSource implements IJobSource {
 
           const matchesLocation =
             !normalizedLocation ||
+            !job.location ||
             normalizedLocation === 'remote' ||
             jobLocation.includes(normalizedLocation) ||
             jobLocation.includes('worldwide');
