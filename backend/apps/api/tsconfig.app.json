@@ -13,7 +13,8 @@
     "../../libs/database/schemas/job.schema.ts",
     "../../libs/database/schemas/search.schema.ts",
     "../../libs/database/schemas/searchResult.schema.ts",
-    "../../libs/shared/src/mock/page.ts"
+    "../../libs/shared/src/mock/page.ts",
+    "src/jobs/dto/job.dto.ts"
   ],
   "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }

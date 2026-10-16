@@ -5,6 +5,6 @@
     "rootDir": "../..",
     "outDir": "../../dist/libs/shared"
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../../apps/api/src/jobs/dto/job.dto.ts"],
   "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }

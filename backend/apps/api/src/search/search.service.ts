@@ -2,6 +2,7 @@ import { Search, SearchDocument } from '@app/database/schemas/search.schema';
 import { KafkaService } from '@app/kafka';
 import { KAFKA_EVENT_REQUEST } from '@app/kafka/domain/constant';
 import { KafkaResponsePayloadType } from '@app/kafka/dto/create-kafka.dto';
+import { PaginationRequestDto } from '@app/shared/dto/page.dto';
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { randomUUID } from 'crypto';
@@ -12,6 +13,10 @@ import {
   CreateResponseSearchByIdDto,
   CreateResponseSearchDto,
 } from './dto/create-search.dto';
+import {
+  GetSearchResponseDto,
+  SearchItemResponseDto,
+} from './dto/get-search.dto';
 import { SearchModule } from './search.module';
 
 @Injectable()
@@ -47,8 +52,28 @@ export class SearchService {
     };
   }
 
-  findAll() {
-    return this.searchModel.find();
+  async findAll({
+    page = 1,
+    limit = 10,
+  }: PaginationRequestDto): Promise<GetSearchResponseDto> {
+    const skip = (page - 1) * limit;
+
+    const [items, count] = await this.searchModel.findAndCount({}, null, {
+      skip: skip,
+      sort: 'DESC',
+      limit,
+      lean: true,
+    });
+
+    const itemsClean = items.map((elem) => new SearchItemResponseDto(elem));
+
+    return {
+      items: itemsClean,
+      page: +page,
+      limit: +limit,
+      total: count,
+      totalPages: Math.ceil(count / limit),
+    };
   }
 
   async findOne(id: string): Promise<CreateResponseSearchByIdDto> {

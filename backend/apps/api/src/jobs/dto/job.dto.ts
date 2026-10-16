@@ -1,7 +1,8 @@
 import { Job } from '@app/database/schemas/job.schema';
+import { PaginationResponseDto } from '@app/shared/dto/page.dto';
 import { ApiProperty } from '@nestjs/swagger';
-import { Exclude, Expose, Transform, Type } from 'class-transformer';
-import { IsInt, IsString, ValidateNested } from 'class-validator';
+import { Exclude, Expose, Transform } from 'class-transformer';
+import { IsArray, IsNumber, IsString } from 'class-validator';
 
 export class JobItemResponseDto extends Job {
   @ApiProperty()
@@ -22,18 +23,22 @@ export class JobItemResponseDto extends Job {
   }
 }
 
-export class JobResponseDto {
+export class RawJobResponseDto extends PaginationResponseDto<JobItemResponseDto> {}
+
+export class JobResponseDto extends RawJobResponseDto {
   @IsString()
   searchId: string;
 
-  @IsInt()
-  jobsCount: number;
-
-  @ValidateNested({ each: true })
-  @Type(() => JobItemResponseDto)
-  jobs: JobItemResponseDto[];
-
   constructor(partial: Partial<JobResponseDto>) {
+    super();
     Object.assign(this, partial);
   }
+}
+
+export class JobsWithCount {
+  @IsNumber()
+  total: number;
+
+  @IsArray()
+  items: JobItemResponseDto[];
 }
