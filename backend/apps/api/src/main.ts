@@ -15,11 +15,11 @@ async function bootstrap() {
     transport: Transport.KAFKA,
     options: {
       client: {
-        clientId: configService.get('KAFKA_CLIENT_ID', 'API_CLIENT'),
-        brokers: [configService.get('KAFKA_URI', '127.0.0.1:9092')],
+        clientId: configService.getOrThrow('KAFKA_CLIENT_ID', 'API_CLIENT'),
+        brokers: [configService.getOrThrow('KAFKA_URI', '127.0.0.1:9092')],
       },
       consumer: {
-        groupId: configService.get('KAFKA_GROUP_ID', 'KAFKA_API_GROUP'),
+        groupId: configService.getOrThrow('KAFKA_GROUP_ID', 'KAFKA_API_GROUP'),
       },
     },
   });

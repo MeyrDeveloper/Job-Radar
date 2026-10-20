@@ -1,0 +1,27 @@
+$dark-theme-colors: (
+  'bg-main': #0f172a,
+  'bg-surface': #17233b,
+  'text-main': #f8fafc,
+  'text-muted': #94a3b8,
+  'primary': #3b82f6,
+  'primary-hover': #2563eb,
+  'border': #334155,
+  'success': #22c55e,
+  'warning': #f59e0b,
+  'error': #ef4444,
+  'info': #3b82f6,
+);
+
+$light-theme-colors: (
+  'bg-main': #f6f8fc,
+  'bg-surface': #ffffff,
+  'text-main': #17233b,
+  'text-muted': #7b879b,
+  'primary': #4361ee,
+  'primary-hover': #3451d1,
+  'border': #e6eaf2,
+  'success': #159a72,
+  'warning': #d99120,
+  'error': #dc4545,
+  'info': #4361ee,
+);

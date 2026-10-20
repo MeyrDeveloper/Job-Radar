@@ -1,0 +1,44 @@
+:root {
+  color-scheme: light dark;
+
+  @each $name, $value in $light-theme-colors {
+    $dark-value: map-get(
+      $map: $dark-theme-colors,
+      $key: $name,
+    );
+
+    --#{$name}: light-dark(#{$value}, #{$dark-value});
+  }
+
+  &[data-theme='light'] {
+    @each $name, $value in $light-theme-colors {
+      --#{$name}: #{$value};
+    }
+  }
+
+  &[data-theme='dark'] {
+    @each $name, $value in $dark-theme-colors {
+      --#{$name}: #{$value};
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+*,
+::before,
+::after {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}

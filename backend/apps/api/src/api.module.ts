@@ -19,7 +19,7 @@ import { SearchModule } from './search/search.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
-        const uri = configService.get<string>('MONGODB_URI');
+        const uri = configService.getOrThrow<string>('MONGODB_URI');
 
         return { uri };
       },
