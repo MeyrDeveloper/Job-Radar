@@ -1,3 +1,4 @@
 {
-  "search": "search"
+  "search": "search",
+  "searchVacancies": "@.upper:search vacancies"
 }
