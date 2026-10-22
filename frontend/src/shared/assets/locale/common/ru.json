@@ -1,4 +1,8 @@
 {
-  "search": "поиск",
-  "searchVacancies": "@.upper:поиск вакансий"
+  "search": "@.customCapitalize:поиск",
+  "searchJobs": "поиск работы",
+  "workingSpace": "рабочее пространство",
+  "vacancy": "@.customCapitalize:вакансия | @.customCapitalize:вакансии",
+  "history": "@.customCapitalize:история",
+  "yourAccount": "ваш аккаунт"
 }

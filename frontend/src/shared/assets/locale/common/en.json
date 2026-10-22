@@ -1,4 +1,8 @@
 {
-  "search": "search",
-  "searchVacancies": "@.upper:search vacancies"
+  "search": "@.customCapitalize:search",
+  "searchJobs": "search jobs",
+  "workingSpace": "working space",
+  "vacancy": "@.customCapitalize:vacancy | @.customCapitalize:vacancies",
+  "history": "@.customCapitalize:history",
+  "yourAccount": "your account"
 }

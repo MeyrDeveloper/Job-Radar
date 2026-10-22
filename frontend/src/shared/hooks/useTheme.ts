@@ -16,8 +16,6 @@ export type SystemThemeValuesType = (typeof SystemThemeValues)[keyof typeof Syst
 const setTheme = (value: SystemThemeValuesType) => {
   localStorage.setItem('theme', value)
 
-  console.log(value)
-
   if (value === SystemThemeValues.system) {
     document.documentElement.removeAttribute('data-theme')
   } else {

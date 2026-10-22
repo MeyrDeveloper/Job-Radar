@@ -8,6 +8,7 @@ import { ApiService } from './api.service';
 import { JobsModule } from './jobs/jobs.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { SearchModule } from './search/search.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { SearchModule } from './search/search.module';
     KafkaModule.forRootAsync({ name: 'SEARCH_KAFKA_SERVICE' }),
     JobsModule,
     SearchModule,
+    UsersModule,
   ],
   controllers: [ApiController],
   providers: [ApiService, SharedService],

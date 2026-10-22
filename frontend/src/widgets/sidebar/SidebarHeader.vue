@@ -3,12 +3,12 @@ import Logo from '@/shared/ui/logo/Logo.vue'
 </script>
 
 <template>
-  <section>
+  <section class="flex items-center">
     <Logo />
 
-    <div>
-      <h2>Job Radar</h2>
-      <p>{{ $t('common.searchVacancies') }}</p>
+    <div class="ml-4 font-semibold">
+      <h2 class="text-2xl">Job Radar</h2>
+      <p class="uppercase text-gray-600 text-xs">{{ $t('common.searchJobs') }}</p>
     </div>
   </section>
 </template>
