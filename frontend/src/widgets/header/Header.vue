@@ -1,2 +1,6 @@
 <script setup lang="ts"></script>
-<template>Header</template>
+<template>
+  <header>
+    <section></section>
+  </header>
+</template>

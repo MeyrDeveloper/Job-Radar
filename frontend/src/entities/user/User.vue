@@ -26,7 +26,7 @@ const letters = computed(() => {
         <p>{{ $t('common.myProfile') }}</p>
       </div>
     </div>
-    <div>
+    <div class="mt-5">
       <label>
         <input type="checkbox" v-on:change="() => themeStore.toggleTheme()" />
         Status: {{ themeStore.currentTheme }}
