@@ -5,5 +5,9 @@
   "vacancy": "@.customCapitalize:вакансия | @.customCapitalize:вакансии",
   "history": "@.customCapitalize:история",
   "yourAccount": "ваш аккаунт",
-  "myProfile": "@.customCapitalize:мой профиль"
+  "myProfile": "@.customCapitalize:мой профиль",
+  "darkTheme": "темная тема | темную тему",
+  "lightTheme": "светлая тема | светлую тему",
+  "turnOn": "Включить",
+  "findOpportunity": "Найди следующую возможность"
 }

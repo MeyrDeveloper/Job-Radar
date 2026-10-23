@@ -1,9 +1,25 @@
 <script lang="ts" setup>
-import { useThemeStore } from '@/app/providers/stores/theme'
+import { SystemThemeValues, ThemeValues, useThemeStore } from '@/app/providers/stores/theme'
+import Switch from '@/shared/ui/components/Switch.vue'
 import { computed, inject, type ComputedRef } from 'vue'
+import { useI18n } from 'vue-i18n'
 import type { User } from './model/types'
 
 const themeStore = useThemeStore()
+const i18n = useI18n()
+
+const theme = computed({
+  get() {
+    if (themeStore.currentTheme === SystemThemeValues.system) {
+      return !window.matchMedia('(prefers-color-scheme: dark)').matches
+    }
+
+    return themeStore.currentTheme === SystemThemeValues.light
+  },
+  set(value) {
+    themeStore.setTheme(value ? ThemeValues.light : ThemeValues.dark)
+  },
+})
 
 const user = inject<ComputedRef<User>>('user')
 const letters = computed(() => {
@@ -13,6 +29,11 @@ const letters = computed(() => {
 
   return { firstName, lastName }
 })
+
+const themeText = computed(
+  () =>
+    `${i18n.t('common.turnOn')} ${theme.value ? i18n.t('common.darkTheme', 2) : i18n.t('common.lightTheme', 2)}`,
+)
 </script>
 
 <template>
@@ -27,10 +48,7 @@ const letters = computed(() => {
       </div>
     </div>
     <div class="mt-5">
-      <label>
-        <input type="checkbox" v-on:change="() => themeStore.toggleTheme()" />
-        Status: {{ themeStore.currentTheme }}
-      </label>
+      <Switch v-model="theme">{{ themeText }}</Switch>
     </div>
   </section>
 </template>

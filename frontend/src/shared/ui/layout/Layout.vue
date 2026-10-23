@@ -19,7 +19,7 @@ provide(
   <div class="flex">
     <Sidebar />
 
-    <main class="container mx-auto px-2 flex-1 min-0">
+    <main class="container mx-auto flex-1 min-0">
       <Header />
 
       <router-view v-slot="{ Component }">

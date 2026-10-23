@@ -5,5 +5,9 @@
   "vacancy": "@.customCapitalize:vacancy | @.customCapitalize:vacancies",
   "history": "@.customCapitalize:history",
   "yourAccount": "your account",
-  "myProfile": "@.customCapitalize:my profile"
+  "myProfile": "@.customCapitalize:my profile",
+  "darkTheme": "dark theme",
+  "lightTheme": "light theme",
+  "turnOn": "Turn on",
+  "findOpportunity": "Find your new opportunity"
 }

@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-const ThemeValues = {
+export const ThemeValues = {
   light: 'light',
   dark: 'dark',
 } as const
 
 export type ThemeValuesType = (typeof ThemeValues)[keyof typeof ThemeValues]
 
-const SystemThemeValues = {
+export const SystemThemeValues = {
   ...ThemeValues,
   system: 'system',
 } as const
