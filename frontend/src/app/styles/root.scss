@@ -11,26 +11,27 @@
   }
 
   &[data-theme='light'] {
+    color-scheme: light;
     @each $name, $value in $light-theme-colors {
       --#{$name}: #{$value};
     }
   }
 
   &[data-theme='dark'] {
+    color-scheme: dark;
     @each $name, $value in $dark-theme-colors {
       --#{$name}: #{$value};
     }
   }
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
+  @media (prefers-color-scheme: dark) {
+    &:not([data-theme='light']) {
+      color-scheme: dark;
+    }
   }
 }
 
 body {
-  background-color: var(--bg-main);
   color: var(--text-main);
   transition:
     background-color 0.3s,

@@ -4,5 +4,6 @@
   "workingSpace": "рабочее пространство",
   "vacancy": "@.customCapitalize:вакансия | @.customCapitalize:вакансии",
   "history": "@.customCapitalize:история",
-  "yourAccount": "ваш аккаунт"
+  "yourAccount": "ваш аккаунт",
+  "myProfile": "@.customCapitalize:мой профиль"
 }

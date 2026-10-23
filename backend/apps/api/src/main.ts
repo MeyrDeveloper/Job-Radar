@@ -7,6 +7,13 @@ import { ApiModule } from './api.module.js';
 
 async function bootstrap() {
   const app = await NestFactory.create(ApiModule);
+
+  app.enableCors({
+    origin: ['http://localhost:5173'],
+    credentials: true,
+    allowedHeaders: 'Content-Type, Accept, Authorization',
+  });
+
   const configService = app.get(ConfigService);
   // validation dto
   app.useGlobalPipes(new ValidationPipe());

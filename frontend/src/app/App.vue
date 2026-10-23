@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { useTheme } from '@/shared/hooks/useTheme'
+import { onMounted } from 'vue'
+import { useThemeStore } from './providers/stores/theme'
 
-useTheme()
+const themeStore = useThemeStore()
+
+onMounted(() => {
+  themeStore.initTheme()
+})
 </script>
 
 <template>

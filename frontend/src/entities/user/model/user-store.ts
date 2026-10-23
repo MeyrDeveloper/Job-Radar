@@ -13,9 +13,8 @@ export const useUserStore = defineStore('user', () => {
   const getUser = async (id: string) => {
     try {
       isLoading.value = true
-      const res = await fetchUser(id)
-      console.log('s')
-      return res
+
+      user.value = await fetchUser(id)
     } catch (e: unknown) {
       if (e instanceof AxiosError) {
         error.value = e.message

@@ -1,5 +1,18 @@
 <script lang="ts" setup>
-const [firstName, lastName] = 'meir nurali'.split(' ').map((elem) => elem?.[0]?.toUpperCase())
+import { useThemeStore } from '@/app/providers/stores/theme'
+import { computed, inject, type ComputedRef } from 'vue'
+import type { User } from './model/types'
+
+const themeStore = useThemeStore()
+
+const user = inject<ComputedRef<User>>('user')
+const letters = computed(() => {
+  const [firstName, lastName] = `${user?.value?.firstName} ${user?.value?.lastName}`
+    .split(' ')
+    .map((elem) => elem?.[0]?.toUpperCase())
+
+  return { firstName, lastName }
+})
 </script>
 
 <template>
@@ -7,11 +20,17 @@ const [firstName, lastName] = 'meir nurali'.split(' ').map((elem) => elem?.[0]?.
     <h6 class="uppercase font-semibold text-gray-600 text-md">{{ $t('common.yourAccount') }}</h6>
     <div class="flex items-center mt-5">
       <p class="rounded-xl bg-blue-100 text-l text-blue-800 font-extrabold p-3">
-        {{ firstName }}{{ lastName }}
+        {{ letters.firstName }}{{ letters.lastName }}
       </p>
-      <div>
-        <p></p>
+      <div class="ml-4 font-semibold">
+        <p>{{ $t('common.myProfile') }}</p>
       </div>
+    </div>
+    <div>
+      <label>
+        <input type="checkbox" v-on:change="() => themeStore.toggleTheme()" />
+        Status: {{ themeStore.currentTheme }}
+      </label>
     </div>
   </section>
 </template>

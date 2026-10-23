@@ -4,5 +4,6 @@
   "workingSpace": "working space",
   "vacancy": "@.customCapitalize:vacancy | @.customCapitalize:vacancies",
   "history": "@.customCapitalize:history",
-  "yourAccount": "your account"
+  "yourAccount": "your account",
+  "myProfile": "@.customCapitalize:my profile"
 }

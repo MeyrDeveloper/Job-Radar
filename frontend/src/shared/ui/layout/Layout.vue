@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from '@/entities/user/model/user-store.ts'
 import Sidebar from '@/widgets/sidebar/Sidebar.vue'
-import { onMounted } from 'vue'
+import { computed, onMounted, provide } from 'vue'
 import Header from '../../../widgets/header/Header.vue'
 
 const store = useUserStore()
@@ -9,6 +9,11 @@ const store = useUserStore()
 onMounted(() => {
   store.getUser('1234')
 })
+
+provide(
+  'user',
+  computed(() => store.user),
+)
 </script>
 <template>
   <div class="flex">
